@@ -12,15 +12,17 @@ echo "Введите второе число:\n";
 
 do {
   $b = trim(fgets(STDIN));
-  
+
+  if (ctype_digit($b) === false) {  
+  fwrite(STDERR, "Введите, пожалуйста, число\n");
+  } 
   if ((int)$b === 0) {
     fwrite(STDERR, "Делить на 0 нельзя\n");
     $b = trim(fgets(STDIN));
   }
-  if (ctype_digit($b) === false) {  
-  fwrite(STDERR, "Введите, пожалуйста, число\n");
-  } 
+
 }
   while ((int)$b === 0 || ctype_digit($b) === false);
 
 fwrite(STDOUT, "Результат вычисления: " . $a/$b);
+?>
