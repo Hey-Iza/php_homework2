@@ -3,6 +3,7 @@ echo "Введите первое число:\n";
 
 do {
   $a = trim(fgets(STDIN));
+
   if (ctype_digit($a) === false) {  
   fwrite(STDERR, "Введите, пожалуйста, число\n");
   } 
@@ -16,12 +17,14 @@ do {
   if (ctype_digit($b) === false) {  
   fwrite(STDERR, "Введите, пожалуйста, число\n");
   } 
+ } while (ctype_digit($b) === false);
+
   if ((int)$b === 0) {
+
     fwrite(STDERR, "Делить на 0 нельзя\n");
     $b = trim(fgets(STDIN));
   }
 
-}
   while ((int)$b === 0 || ctype_digit($b) === false);
 
 fwrite(STDOUT, "Результат вычисления: " . $a/$b);
